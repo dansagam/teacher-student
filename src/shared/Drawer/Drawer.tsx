@@ -81,10 +81,10 @@ function Drawer(props: DrawerProps) {
             data-app-active={Boolean(open)}
             className={twMerge(
               ...[
-                "Apilme-App-Drawer-frame bg-common-white md:w-[25.6rem] sm:w-[60vw] h-screen fixed top-0 p-[2.5rem_1.15rem] z-[320] transition-transform duration-200 transform",
+                "Apilme-App-Drawer-frame bg-common-white w-[25.6rem] sm:w-[60vw] h-screen fixed top-0 p-[2.5rem_1.15rem] z-[320] transition-transform duration-200 transform",
                 anchor === "right"
-                  ? "right-0 data-[app-active=true]:translate-x-full"
-                  : "left-0 data-[app-active=true]:-translate-x-full",
+                  ? "right-0 data-[app-active=false]:translate-x-full"
+                  : "left-0 data-[app-active=false]:-translate-x-full",
                 !fullScreen && "max-w-md",
               ]
             )}

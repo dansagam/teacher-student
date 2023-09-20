@@ -14,10 +14,10 @@ function SidebarLink({ path, label, icon }: SidebarLinkProps) {
     <Link
       href={path}
       data-app-active={pathname.includes(path)}
-      className=" data-[app-active=true]:bg-[#dbb872] hover:bg-[#dbb872] flex  justify-start gap-3 p-[1rem_1.4rem] items-center"
+      className=" data-[app-active=true]:bg-[#dbb872] hover:bg-[#dbb872] flex md:justify-center sm:justify-start justify-start gap-3 p-[1rem_1.4rem] items-center"
     >
       <span className=" text-xl">{icon} </span>
-      <span className=" xlsm:hidden sm:block flex text-lg">{label}</span>
+      <span className=" md:hidden sm:block flex text-lg">{label}</span>
     </Link>
   );
 }

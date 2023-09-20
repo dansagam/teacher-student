@@ -8,10 +8,10 @@ import SidebarLink from "./SidebarLink";
 
 function Sidebar() {
   return (
-    <aside className=" sticky top-0 h-screen bg-primary-main overflow-auto w-[18rem] p-3 flex flex-col gap-5 xlsm:w-[12rem]">
+    <aside className=" sticky top-0 h-screen bg-primary-main overflow-auto w-[18rem] md:w-[5rem] sm:hidden p-3 flex flex-col gap-5 ">
       <div className=" flex items-center justify-start gap-3">
         <FaChalkboardTeacher className="text-4xl " />
-        <h2 className=" font-semibold text-2xl font-poppin">TcStuApp</h2>
+        <h2 className=" font-semibold text-2xl font-poppin md:hidden">TcStuApp</h2>
       </div>
       <div className="py-8 flex flex-1 flex-col gap-3">
         {sidebarData.map((fields, idx) => (
