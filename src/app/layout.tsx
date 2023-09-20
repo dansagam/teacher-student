@@ -8,6 +8,8 @@ import { IChildren } from "@/@types/baseInterfaces";
 import { ToastContainer } from "react-toastify";
 import "@/styles/globals.css";
 import HydrationWrapper from "@/shared/HydrationWrapper/HydrationWrapper";
+import Header from "@/components/layouts/Header";
+import Sidebar from "@/components/layouts/Sidebar";
 // import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -37,7 +39,15 @@ export default function RootLayout({ children }: IChildren) {
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" enableSystem={false}>
-          <HydrationWrapper>{children}</HydrationWrapper>
+          <HydrationWrapper>
+            <div className="w-full flex">
+              <Sidebar />
+              <div className="flex flex-col flex-1">
+                <Header />
+                <main className=" flex-1 overflow-y-auto  py-4 px-9 xlsm:px-4">{children}</main>
+              </div>
+            </div>
+          </HydrationWrapper>
           <ToastContainer position="top-right" pauseOnFocusLoss pauseOnHover />
         </ThemeProvider>
       </body>
