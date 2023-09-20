@@ -3,6 +3,7 @@ import React from "react";
 import { UseFormReturn } from "react-hook-form";
 import ControlledInput from "@/shared/Input/ControlledInput";
 import { TeacherPayloadType } from "./validator";
+import ControlledSelect from "@/shared/Select/ControlledSelect";
 
 type AddTeacherDrawerProps = Pick<
   React.ComponentProps<typeof Drawer>,
@@ -12,6 +13,29 @@ type AddTeacherDrawerProps = Pick<
   form: UseFormReturn<TeacherPayloadType>;
   onAction(_values: TeacherPayloadType): void;
 };
+
+const options = [
+  {
+    label: "Mr",
+    value: "Mr",
+  },
+  {
+    label: "Mrs",
+    value: "Mrs",
+  },
+  {
+    label: "Dr",
+    value: "Dr",
+  },
+  {
+    label: "Miss",
+    value: "Miss",
+  },
+  {
+    label: "Prof",
+    value: "Prof",
+  },
+];
 function AddTeacherDrawer(props: AddTeacherDrawerProps) {
   const { open, onClose, isEdit, form, onAction } = props;
   const { control, handleSubmit } = form;
@@ -26,7 +50,7 @@ function AddTeacherDrawer(props: AddTeacherDrawerProps) {
       actionText={isEdit ? "Edit" : "Add"}
     >
       <div className=" flex flex-col gap-5 ">
-        <ControlledInput control={control} name="title" label="Title" />
+        <ControlledSelect control={control} name="title" label="Title" options={options} />
         <ControlledInput control={control} name="firstname" label="First Name" />
         <ControlledInput control={control} name="surname" label="Surname" />
         <ControlledInput control={control} name="date" type="date" label="Date of Birth" />
