@@ -7,7 +7,7 @@
 @layer base {
   html,
   body {
-    font-family: "Gelion", system-ui, sans-serif;
+    font-family: "Poppins", "Inter", sans-serif;
     min-width: auto;
   }
   /* body {
