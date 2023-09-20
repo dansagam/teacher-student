@@ -7,11 +7,10 @@ import {
   RegisterOptions,
   Controller,
 } from "react-hook-form";
-import { IRadioProps } from "./types";
 import Radio from "./Radio";
 
 type OmitRadioProps = Omit<
-  IRadioProps,
+  React.ComponentProps<typeof Radio>,
   "name" | "error" | "value" | "onChange" | "onBlur" | "ref" | "helperText"
 > & {
   subText?: string;

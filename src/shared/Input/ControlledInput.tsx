@@ -8,12 +8,11 @@ import {
   RegisterOptions,
   Controller,
 } from "react-hook-form";
-import { InputProps } from "./type";
 import Input from "./Input";
 import { onNumberValidator } from "@/utils/numberFormat";
 
 type OmitInputProps = Omit<
-  InputProps,
+  React.ComponentProps<typeof Input>,
   "name" | "error" | "value" | "onChange" | "onBlur" | "ref" | "helperText"
 > & {
   subText?: string;
