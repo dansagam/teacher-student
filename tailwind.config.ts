@@ -105,11 +105,22 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      spacing: {
+        // "8xl": "96rem",
+        "8xl": "1980px",
+        "9xl": "128rem",
+      },
+      borderRadius: {
+        "4xl": "2rem",
+      },
     },
     container: {
       center: true,
       screens: {
-        "2xl": "1440px",
+        sm: "100%",
+        md: "100%",
+        lg: "1024px",
+        xl: "1280px",
       },
     },
     screens: {
