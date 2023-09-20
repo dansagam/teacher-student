@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal } from "..";
+import ModifiedDialog from "./ModifiedDialog";
 
 export interface ISuccessModal {
   open: boolean;
@@ -12,7 +12,7 @@ export interface ISuccessModal {
 const SuccessModal = (props: ISuccessModal) => {
   const { open, onClose, title, description, actionText, onAction } = props;
   return (
-    <Modal onClose={onClose} open={open} onAction={onAction} actionText={actionText}>
+    <ModifiedDialog onClose={onClose} open={open} onAction={onAction} actionText={actionText}>
       <div className=" max-w-sm">
         <div>
           <div className=" flex flex-col justify-center gap-y-4">
@@ -24,7 +24,7 @@ const SuccessModal = (props: ISuccessModal) => {
           </div>
         </div>
       </div>
-    </Modal>
+    </ModifiedDialog>
   );
 };
 

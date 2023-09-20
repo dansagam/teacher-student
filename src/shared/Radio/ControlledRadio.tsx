@@ -5,8 +5,8 @@ import {
   Path,
   FieldErrorsImpl,
   RegisterOptions,
-} from "react-hook-form/dist/types";
-import { Controller } from "react-hook-form";
+  Controller,
+} from "react-hook-form";
 import { IRadioProps } from "./types";
 import Radio from "./Radio";
 

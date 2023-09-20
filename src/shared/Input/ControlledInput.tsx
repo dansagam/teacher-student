@@ -6,8 +6,8 @@ import {
   Path,
   FieldErrorsImpl,
   RegisterOptions,
-} from "react-hook-form/dist/types";
-import { Controller } from "react-hook-form";
+  Controller,
+} from "react-hook-form";
 import { InputProps } from "./type";
 import Input from "./Input";
 import { onNumberValidator } from "@/utils/numberFormat";
