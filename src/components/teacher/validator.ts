@@ -12,7 +12,7 @@ const teacherSchema = yup.object({
     .max(subYears(new Date(), 21), "Age may not be less than 21"),
   teacherNo: yup.string().required("Teacher Number is required"),
   salary: yup.number().optional(),
-  nationId: yup.string().required("National Number is required"),
+  nationalId: yup.string().required("National Number is required"),
 });
 
 export interface TeacherPayloadType extends yup.InferType<typeof teacherSchema> {}
@@ -22,7 +22,7 @@ export const teacherDefaultValues: TeacherPayloadType = {
   surname: "",
   date: new Date(),
   teacherNo: "",
-  nationId: "",
+  nationalId: "",
   salary: 0,
 };
 export const teacherResolver = yupResolver(teacherSchema);

@@ -1,12 +1,142 @@
+"use client";
+
+import AddStudentDrawer from "@/components/student/AddStudentDrawer";
+import StudentCard, { StudentData } from "@/components/student/StudentCard";
+import AddTeacherDrawer from "@/components/teacher/AddTeacherDrawer";
+import TeacherCard, { TeacherData } from "@/components/teacher/TeacherCard";
+import {
+  TeacherPayloadType,
+  teacherDefaultValues,
+  teacherResolver,
+} from "@/components/teacher/validator";
+import { studentMockList, teacherMockList } from "@/mocks/student";
+import Button from "@/shared/Button/Button";
+import { getHours } from "date-fns";
 import React from "react";
+import { useForm } from "react-hook-form";
+import { PiPlusFill } from "react-icons/pi";
+import { v4 as uuidv4 } from "uuid";
 
 const TeacherListPage = () => {
+  const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [selected, setSelected] = React.useState<
+    ({ isEdit?: boolean; isRemove?: boolean } & Partial<TeacherData>) | null
+  >(null);
+  const [mock, setMock] = React.useState(teacherMockList);
+  const form = useForm<TeacherPayloadType>({
+    defaultValues: teacherDefaultValues,
+    resolver: teacherResolver,
+  });
+  const { reset } = form;
+
+  const onSubmit = (values: TeacherPayloadType) => {
+    setLoading(true);
+    if (selected?.isEdit) {
+      setTimeout(() => {
+        setMock((prev) => [
+          {
+            date: values.date,
+            firstname: values.firstname,
+            id: selected?.id || "",
+            lastname: values.surname,
+            nationalId: values.nationalId,
+            teacherNo: values.teacherNo,
+          },
+          ...prev,
+        ]);
+        setLoading(false);
+      }, 3000);
+    } else {
+      setTimeout(() => {
+        setMock((prev) => [
+          {
+            date: values.date,
+            firstname: values.firstname,
+            id: uuidv4(),
+            lastname: values.surname,
+            nationalId: values.nationalId,
+            teacherNo: values.teacherNo,
+          },
+          ...prev,
+        ]);
+        setLoading(false);
+      }, 3000);
+    }
+  };
+
+  const onRemove = (values: string) => {
+    console.log({ values });
+    setLoading(true);
+
+    const filtered = mock.filter((field) => field.id !== values);
+    setTimeout(() => {
+      setMock(filtered);
+      setLoading(false);
+    }, 3000);
+  };
   return (
-    <div>
+    <React.Fragment>
       <div>
-        <div>TeacherListPage</div>
+        <div className=" flex justify-between items-center">
+          <h2 className=" text-xl font-poppin font-semibold">
+            {" "}
+            {getHours(new Date()) > 18
+              ? "Good Evening"
+              : getHours(new Date()) < 12
+              ? "Good Morning"
+              : "Good Afternoon"}{" "}
+            , <span className=" text-primary-main">User</span>
+          </h2>
+          <Button
+            variant="contained"
+            color="primary"
+            startArdornment={<PiPlusFill />}
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            Add Teacher
+          </Button>
+        </div>
+        <div className=" py-10 px-12 bg-primary-main w-full shadow-lg rounded-md my-2">
+          <h2 className=" font-poppin font-semibold text-xl ">
+            The List of the teacher are great, Do you want to explore?
+          </h2>
+        </div>
+        <div className=" rounded-md shadow-lg bg-common-white py-6 px-8">
+          <h2>Teacher List</h2>
+          <div className=" grid grid-cols-4 gap-3 md:grid-cols-2 xlsm:grid-cols-1 mdlg:grid-cols-3">
+            {mock.map((field) => (
+              <TeacherCard
+                onClick={(key, values) => {
+                  if (key === "edit") {
+                    setSelected({ ...values, isEdit: true });
+                  } else {
+                    onRemove(values.id);
+                  }
+                }}
+                key={field.id}
+                data={field}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+      <AddTeacherDrawer
+        open={open || Boolean(selected?.isEdit)}
+        onClose={() => {
+          setOpen(false);
+          setSelected(null);
+          reset();
+        }}
+        isEdit={selected?.isEdit}
+        form={form}
+        selected={selected}
+        onAction={onSubmit}
+        loading={loading}
+      />
+    </React.Fragment>
   );
 };
 

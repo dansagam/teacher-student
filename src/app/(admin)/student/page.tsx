@@ -30,18 +30,46 @@ const StudentListPage = () => {
 
   const onSubmit = (values: StudentPayloadType) => {
     setLoading(true);
+    if (selected?.isEdit) {
+      setTimeout(() => {
+        setMock((prev) => [
+          {
+            date: values.date,
+            firstname: values.firstname,
+            id: selected?.id || "",
+            lastname: values.surname,
+            nationalId: values.nationalId,
+            studentNo: values.studentNo,
+          },
+          ...prev,
+        ]);
+        setLoading(false);
+      }, 3000);
+    } else {
+      setTimeout(() => {
+        setMock((prev) => [
+          {
+            date: values.date,
+            firstname: values.firstname,
+            id: uuidv4(),
+            lastname: values.surname,
+            nationalId: values.nationalId,
+            studentNo: values.studentNo,
+          },
+          ...prev,
+        ]);
+        setLoading(false);
+      }, 3000);
+    }
+  };
+
+  const onRemove = (values: string) => {
+    console.log({ values });
+    setLoading(true);
+
+    const filtered = mock.filter((field) => field.id !== values);
     setTimeout(() => {
-      setMock((prev) => [
-        {
-          date: values.date,
-          firstname: values.firstname,
-          id: uuidv4(),
-          lastname: values.surname,
-          nationalId: values.nationalId,
-          studentNo: values.studentNo,
-        },
-        ...prev,
-      ]);
+      setMock(filtered);
       setLoading(false);
     }, 3000);
   };
@@ -71,7 +99,6 @@ const StudentListPage = () => {
         </div>
         <div className=" py-10 px-12 bg-primary-main w-full shadow-lg rounded-md my-2">
           <h2 className=" font-poppin font-semibold text-xl ">
-            {" "}
             The List of the student are great, Do you want to explore?
           </h2>
         </div>
@@ -84,7 +111,7 @@ const StudentListPage = () => {
                   if (key === "edit") {
                     setSelected({ ...values, isEdit: true });
                   } else {
-                    setSelected({ ...values, isRemove: true });
+                    onRemove(values.id);
                   }
                 }}
                 key={field.id}
