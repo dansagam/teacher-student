@@ -45,6 +45,7 @@ const StudentListPage = () => {
           ...filtered,
         ]);
         setLoading(false);
+        setSelected(null);
       }, 3000);
     } else {
       setTimeout(() => {
@@ -60,6 +61,7 @@ const StudentListPage = () => {
           ...prev,
         ]);
         setLoading(false);
+        setOpen(false);
       }, 3000);
     }
   };

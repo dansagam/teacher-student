@@ -48,6 +48,7 @@ const TeacherListPage = () => {
           ...filtered,
         ]);
         setLoading(false);
+        setSelected(null);
       }, 3000);
     } else {
       setTimeout(() => {
@@ -64,6 +65,7 @@ const TeacherListPage = () => {
           ...prev,
         ]);
         setLoading(false);
+        setOpen(false);
       }, 3000);
     }
   };
