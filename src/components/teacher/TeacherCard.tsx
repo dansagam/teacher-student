@@ -5,6 +5,7 @@ import { BiEdit, BiIdCard, BiTrash } from "react-icons/bi";
 import Dropdown from "@/shared/Menu/Dropdown";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { PiChalkboardTeacher, PiMoney } from "react-icons/pi";
+import Avatar from "@/shared/Avatar/Avatar";
 
 export type TeacherData = {
   id: string;
@@ -55,11 +56,14 @@ function TeacherCard(props: TeacherCardProps) {
   return (
     <div className=" grid shadow-md relative py-3 px-3 min-h-[8rem] rounded-md">
       <div className=" grid grid-cols-[1fr_auto] gap-2">
-        <h3 className=" font-poppin font-semibold">
-          {data.title + " " + data.firstname + " " + data.lastname}
-        </h3>
+        <div className=" flex items-center gap-1">
+          <Avatar name={`${data?.firstname} ${data?.lastname}`} />
+          <h3 className=" font-poppin font-semibold">
+            {data.title + " " + data.firstname + " " + data.lastname}
+          </h3>
+        </div>
         <Dropdown options={memuOption}>
-          <CiMenuKebab className=" text-primary-main" />
+          <CiMenuKebab className=" text-primary-main  text-2xl" />
         </Dropdown>
       </div>
       <div className=" grid grid-rows-4 gap-3 mt-2">
