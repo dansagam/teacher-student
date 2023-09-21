@@ -47,6 +47,7 @@ export const teacherMockList: TeacherData[] = [
     nationalId: "JJHBJHSBHBJH",
     teacherNo: "BDJIJWHBIWI",
     salary: 40000,
+    title: "Dr",
   },
   {
     date: subYears(new Date(), 30),
@@ -56,6 +57,7 @@ export const teacherMockList: TeacherData[] = [
     nationalId: "JHUEVG",
     teacherNo: "BIJBLEBEJB ",
     salary: 40000,
+    title: "Mr",
   },
   {
     date: subYears(new Date(), 30),
@@ -65,6 +67,7 @@ export const teacherMockList: TeacherData[] = [
     nationalId: "NLKNONJIEH",
     teacherNo: "BJIBJEIB",
     salary: 40000,
+    title: "Dr",
   },
   {
     date: subYears(new Date(), 30),
@@ -74,6 +77,7 @@ export const teacherMockList: TeacherData[] = [
     nationalId: "BBENO",
     teacherNo: "NOINEHHVI",
     salary: 79000,
+    title: "Miss",
   },
   {
     date: subYears(new Date(), 30),
@@ -83,5 +87,6 @@ export const teacherMockList: TeacherData[] = [
     nationalId: "JKBHDIHE",
     teacherNo: "HUINE",
     salary: 488000,
+    title: "Dr",
   },
 ];

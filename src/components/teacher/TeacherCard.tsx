@@ -12,6 +12,7 @@ export type TeacherData = {
   teacherNo: string;
   date: Date;
   salary?: number;
+  title: string;
 };
 type TeacherCardProps = {
   data: TeacherData;

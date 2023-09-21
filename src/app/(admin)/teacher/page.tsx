@@ -44,6 +44,7 @@ const TeacherListPage = () => {
             nationalId: values.nationalId,
             teacherNo: values.teacherNo,
             salary: values.salary || 0,
+            title: values.title,
           },
           ...filtered,
         ]);
@@ -61,6 +62,7 @@ const TeacherListPage = () => {
             nationalId: values.nationalId,
             teacherNo: values.teacherNo,
             salary: values.salary || 0,
+            title: values?.title || "",
           },
           ...prev,
         ]);
