@@ -31,6 +31,7 @@ const StudentListPage = () => {
   const onSubmit = (values: StudentPayloadType) => {
     setLoading(true);
     if (selected?.isEdit) {
+      const filtered = mock.filter((field) => field.id !== selected?.id);
       setTimeout(() => {
         setMock((prev) => [
           {
@@ -41,7 +42,7 @@ const StudentListPage = () => {
             nationalId: values.nationalId,
             studentNo: values.studentNo,
           },
-          ...prev,
+          ...filtered,
         ]);
         setLoading(false);
       }, 3000);

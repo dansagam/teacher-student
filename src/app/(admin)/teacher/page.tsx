@@ -33,6 +33,7 @@ const TeacherListPage = () => {
   const onSubmit = (values: TeacherPayloadType) => {
     setLoading(true);
     if (selected?.isEdit) {
+      const filtered = mock.filter((field) => field.id !== selected?.id);
       setTimeout(() => {
         setMock((prev) => [
           {
@@ -42,8 +43,9 @@ const TeacherListPage = () => {
             lastname: values.surname,
             nationalId: values.nationalId,
             teacherNo: values.teacherNo,
+            salary: values.salary || 0,
           },
-          ...prev,
+          ...filtered,
         ]);
         setLoading(false);
       }, 3000);
@@ -57,6 +59,7 @@ const TeacherListPage = () => {
             lastname: values.surname,
             nationalId: values.nationalId,
             teacherNo: values.teacherNo,
+            salary: values.salary || 0,
           },
           ...prev,
         ]);
