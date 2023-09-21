@@ -3,6 +3,8 @@ import React from "react";
 import { CiMenuKebab } from "react-icons/ci";
 import { BiEdit, BiIdCard, BiTrash } from "react-icons/bi";
 import Dropdown from "@/shared/Menu/Dropdown";
+import { formatCurrency } from "@/utils/formatCurrency";
+import { PiChalkboardTeacher, PiMoney } from "react-icons/pi";
 
 export type TeacherData = {
   id: string;
@@ -53,15 +55,25 @@ function TeacherCard(props: TeacherCardProps) {
   return (
     <div className=" grid shadow-md relative py-3 px-3 min-h-[8rem] rounded-md">
       <div className=" grid grid-cols-[1fr_auto] gap-2">
-        <h3 className=" font-poppin font-semibold">{data.firstname + " " + data.lastname}</h3>
+        <h3 className=" font-poppin font-semibold">
+          {data.title + " " + data.firstname + " " + data.lastname}
+        </h3>
         <Dropdown options={memuOption}>
           <CiMenuKebab className=" text-primary-main" />
         </Dropdown>
       </div>
-      <div>
+      <div className=" grid grid-rows-4 gap-3 mt-2">
         <div className=" flex justify-start items-center gap-2">
           <BiIdCard className="text-2xl" />
           <h4>{data.nationalId}</h4>
+        </div>
+        <div className=" flex justify-start items-center gap-2">
+          <PiChalkboardTeacher className="text-2xl" />
+          <h4>{data.teacherNo}</h4>
+        </div>
+        <div className=" flex justify-start items-center gap-2">
+          <PiMoney className="text-2xl text-primary-main" />
+          <h4>{formatCurrency(data?.salary || 0)}</h4>
         </div>
       </div>
     </div>
