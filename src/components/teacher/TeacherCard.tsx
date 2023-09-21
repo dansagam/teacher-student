@@ -65,15 +65,15 @@ function TeacherCard(props: TeacherCardProps) {
       <div className=" grid grid-rows-4 gap-3 mt-2">
         <div className=" flex justify-start items-center gap-2">
           <BiIdCard className="text-2xl" />
-          <h4>{data.nationalId}</h4>
+          <h4 className=" font-poppin">{data.nationalId}</h4>
         </div>
         <div className=" flex justify-start items-center gap-2">
           <PiChalkboardTeacher className="text-2xl" />
-          <h4>{data.teacherNo}</h4>
+          <h4 className=" font-poppin">{data.teacherNo}</h4>
         </div>
         <div className=" flex justify-start items-center gap-2">
           <PiMoney className="text-2xl text-primary-main" />
-          <h4>{formatCurrency(data?.salary || 0)}</h4>
+          <h4 className=" font-poppin">{formatCurrency(data?.salary || 0)}</h4>
         </div>
       </div>
     </div>
