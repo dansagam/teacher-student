@@ -10,7 +10,7 @@ const studentSchema = yup.object({
     .required("Date is required")
     .max(subYears(new Date(), 21), "Age may not be less than 21"),
   studentNo: yup.string().required("student Number is required"),
-  nationId: yup.string().required("National Number is required"),
+  nationalId: yup.string().required("National Number is required"),
 });
 
 export interface StudentPayloadType extends yup.InferType<typeof studentSchema> {}
@@ -19,6 +19,6 @@ export const studentDefaultValues: StudentPayloadType = {
   surname: "",
   date: new Date(),
   studentNo: "",
-  nationId: "",
+  nationalId: "",
 };
 export const studentResolver = yupResolver(studentSchema);
